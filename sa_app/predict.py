@@ -1,5 +1,7 @@
 import re
+import nltk
 import spacy
+import spacy.cli
 import torch
 import pickle
 import numpy as np
@@ -11,7 +13,19 @@ from nltk.corpus import stopwords
 from .models import SentimentRNN
 from . import constants
 
+def download_nltk_resource(package, resource_name):
+    try:
+        nltk.data.find(resource_name)
+    except LookupError:
+        nltk.download(package)
+
+download_nltk_resource('punkt', 'tokenizers/punkt')
+download_nltk_resource('wordnet', 'corpora/wordnet')
+download_nltk_resource('stopwords', 'corpora/stopwords')
+
 lemmatizer = WordNetLemmatizer()
+if not spacy.util.is_package("en_core_web_sm"):
+    spacy.cli.download("en_core_web_sm")
 nlp = spacy.load("en_core_web_sm")
 stop_words = set(stopwords.words('english'))
 
