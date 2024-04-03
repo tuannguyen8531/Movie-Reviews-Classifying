@@ -1,7 +1,10 @@
 nltk
 matplotlib
-streamlit
-wordcloud
 numpy
 pandas
 scikit-learn
+django
+torch
+spacy
+tqdm
+pickle
