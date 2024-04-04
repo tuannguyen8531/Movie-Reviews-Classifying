@@ -1,7 +1,6 @@
 import re
 import nltk
 import spacy
-import spacy.cli
 import torch
 import pickle
 import numpy as np
@@ -24,8 +23,6 @@ download_nltk_resource('wordnet', 'corpora/wordnet')
 download_nltk_resource('stopwords', 'corpora/stopwords')
 
 lemmatizer = WordNetLemmatizer()
-if not spacy.util.is_package("en_core_web_sm"):
-    spacy.cli.download("en_core_web_sm")
 nlp = spacy.load("en_core_web_sm")
 stop_words = set(stopwords.words('english'))
 
