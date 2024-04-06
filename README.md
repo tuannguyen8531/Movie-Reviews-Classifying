@@ -70,7 +70,7 @@ Notebook [sentiment-analysis.ipynb](sentiment-analysis.ipynb) thể hiện chi t
 * Phân tích cảm xúc bình luận
 * Đánh giá mô hình
 
-![Roadmap](roadmap.png)
+![Workflow](workflow.png)
 
 
 ## Screenshots
