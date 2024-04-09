@@ -2,7 +2,6 @@ from django.db import models
 
 # Create your models here.
 
-import torch
 import torch.nn as nn
 
 class SentimentRNN(nn.Module):
@@ -14,14 +13,11 @@ class SentimentRNN(nn.Module):
         self.hidden_dim = hidden_dim
         self.device = device
 
-        # embedding and LSTM layers
         self.embedding = nn.Embedding(vocab_size, embedding_dim)
         self.lstm = nn.LSTM(embedding_dim, hidden_dim, n_layers, dropout=drop_prob, batch_first=True)
 
-        # dropout layer
         self.dropout = nn.Dropout(0.3)
 
-        # linear and sigmoid layer
         self.fc = nn.Linear(hidden_dim, output_size)
         self.sig = nn.Sigmoid()
 
@@ -42,7 +38,6 @@ class SentimentRNN(nn.Module):
         sig_out = sig_out[:, -1]
 
         return sig_out, hidden
-
 
     def init_hidden(self, batch_size):
         weight = next(self.parameters()).data
