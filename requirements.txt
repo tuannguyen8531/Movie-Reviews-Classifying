@@ -8,3 +8,5 @@ torch
 spacy
 tqdm
 pickle
+tensorflow
+keras

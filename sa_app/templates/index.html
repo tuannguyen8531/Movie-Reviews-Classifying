@@ -17,6 +17,11 @@
                     <h5 class="text-center">Enter movie review below to judge it is Positive or Negative.</h5>
                     <div class="form-group">
                         <span style="font-size:18px;">
+                            <select name="model" id="model">
+                                <option value="pytorch" {% if model == 'pytorch' %}selected{% endif %}>Pytorch</option>
+                                <option value="tensorflow" {% if model == 'tensorflow' %}selected{% endif %}>Tensorflow</option>
+                            </select> 
+                            <p></p>
                             You have typed 
                             <span id="counter">{{ text_length|default:0 }}</span> words.<br/>
                             <textarea class="form-control" rows="4" style="border: 1px; resize: none; width: 100%; background-color: #eee"
@@ -24,7 +29,7 @@
                                     onkeyup='countChar("postWeiboText","counter");' autocomplete="on"
                                     name="text">{{ text|default:"" }}</textarea>
                         </span>
-                    </div>
+                    </div>                   
                     <div id="feedback" style="background-color: rgba(255,255,255,0.4)">
                         <div id="sendButton">
                             <button type="submit" class="btn btn-primary float-right">
@@ -32,18 +37,37 @@
                             </button>
                         </div>
                         {% if output %}
-                            <p>The sentiment of your review is: 
+                            {% if model == 'pytorch' %}
+                                <p>The sentiment of your review is: 
+                                    <b>
+                                    {% if output > 0.5 %}
+                                        POSITIVE
+                                    {% else %}
+                                        NEGATIVE
+                                    {% endif %}
+                                    </b>
+                                </p>
+                                <p>The score: {{ output }}</p>
                                 {% if output > 0.5 %}
-                                    Positive
+                                    <img class="text-center" src="{% static 'index/images/happy.png' %}" alt="" width="30%">
                                 {% else %}
-                                    Negative
+                                    <img class="text-center" src="{% static 'index/images/angry.png' %}" alt="" width="30%">
                                 {% endif %}
-                            </p>
-                            <p>The score: {{ output }}</p>
-                            {% if output > 0.5 %}
-                                <img class="text-center" src="{% static 'index/images/happy.png' %}" alt="" width="30%">
                             {% else %}
-                                <img class="text-center" src="{% static 'index/images/angry.png' %}" alt="" width="30%">
+                                <p>The sentiment of your review is: 
+                                    <b>
+                                    {% if pred == 2 %}
+                                        POSITIVE
+                                    {% elif pred == 1 %}
+                                        NEUTRAL
+                                    {% else %}
+                                        NEGATIVE
+                                    {% endif %}
+                                    </b>
+                                </p>
+                                <p>Negative score: {{ output.0 }}</p>
+                                <p>Neutral score: {{ output.1 }}</p>
+                                <p>Positive score: {{ output.2 }}</p>
                             {% endif %}
                         {% endif %}
                     </div>
