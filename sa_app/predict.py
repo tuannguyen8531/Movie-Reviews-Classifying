@@ -47,7 +47,7 @@ def clean_text(text):
 
 def get_vocab():
     try:
-        with open('sa_app/static/models/tokenizer.pkl', 'rb') as f:
+        with open('sa_app/static/models/pytorch/tokenizer.pkl', 'rb') as f:
             vocab = pickle.load(f)
     except FileNotFoundError as e:
         raise Exception(e)
@@ -70,7 +70,7 @@ def pad_sequences(phrase_to_int, seq_length):
 vocab = get_vocab()
 n_vocab = len(vocab) + 1
 
-model_dir = 'sa_app/static/models/'
+model_dir = 'sa_app/static/models/pytorch/'
 model_files =  glob.glob(model_dir + 'model_*.pth')
 try:
     model_fname = model_files[0]
@@ -97,7 +97,16 @@ def predict(sentence):
     batch_size = text_tensor.size(0)
     h = model.init_hidden(batch_size)
     
-    output, h = model(text_tensor, h)
-    pred = torch.round(output.squeeze())
+    output, _ = model(text_tensor, h)
+    predicted = output.flatten().cpu().detach().numpy()
+    output = predicted.tolist()
+    pred = np.argmax(predicted)
     
-    return output.item(), pred.item()
+    return output, pred
+
+
+if __name__ == 'main':
+    sen = 'This movie is really great'
+    output, pred = predict(sen)
+    print(output)
+    print(pred)

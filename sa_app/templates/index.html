@@ -37,25 +37,8 @@
                             </button>
                         </div>
                         {% if output %}
-                            {% if model == 'pytorch' %}
-                                <p>The sentiment of your review is: 
-                                    <b>
-                                    {% if output > 0.5 %}
-                                        POSITIVE
-                                    {% else %}
-                                        NEGATIVE
-                                    {% endif %}
-                                    </b>
-                                </p>
-                                <p>The score: {{ output }}</p>
-                                {% if output > 0.5 %}
-                                    <img class="text-center" src="{% static 'index/images/happy.png' %}" alt="" width="30%">
-                                {% else %}
-                                    <img class="text-center" src="{% static 'index/images/angry.png' %}" alt="" width="30%">
-                                {% endif %}
-                            {% else %}
-                                <p>The sentiment of your review is: 
-                                    <b>
+                            <p>The sentiment of your review is: 
+                                <b>
                                     {% if pred == 2 %}
                                         POSITIVE
                                     {% elif pred == 1 %}
@@ -64,10 +47,14 @@
                                         NEGATIVE
                                     {% endif %}
                                     </b>
-                                </p>
-                                <p>Negative score: {{ output.0 }}</p>
-                                <p>Neutral score: {{ output.1 }}</p>
-                                <p>Positive score: {{ output.2 }}</p>
+                            </p>
+                            <p>Negative score: {{ output.0 }}</p>
+                            <p>Neutral score: {{ output.1 }}</p>
+                            <p>Positive score: {{ output.2 }}</p>
+                            {% if pred > 1 %}
+                                <img class="text-center" src="{% static 'index/images/happy.png' %}" alt="" width="30%">
+                            {% else %}
+                                <img class="text-center" src="{% static 'index/images/angry.png' %}" alt="" width="30%">
                             {% endif %}
                         {% endif %}
                     </div>

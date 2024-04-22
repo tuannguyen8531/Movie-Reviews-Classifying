@@ -15,29 +15,22 @@ class SentimentRNN(nn.Module):
 
         self.embedding = nn.Embedding(vocab_size, embedding_dim)
         self.lstm = nn.LSTM(embedding_dim, hidden_dim, n_layers, dropout=drop_prob, batch_first=True)
-
-        self.dropout = nn.Dropout(0.3)
+        self.dropout = nn.Dropout(drop_prob)
 
         self.fc = nn.Linear(hidden_dim, output_size)
-        self.sig = nn.Sigmoid()
 
     def forward(self, x, hidden):
         batch_size = x.size(0)
 
         embeds = self.embedding(x)
         lstm_out, hidden = self.lstm(embeds, hidden)
+        
+        lstm_last_out = lstm_out[:, -1, :]
 
-        lstm_out = lstm_out.contiguous().view(-1, self.hidden_dim)
-
-        out = self.dropout(lstm_out)
+        out = self.dropout(lstm_last_out)
         out = self.fc(out)
 
-        sig_out = self.sig(out)
-
-        sig_out = sig_out.view(batch_size, -1)
-        sig_out = sig_out[:, -1]
-
-        return sig_out, hidden
+        return out, hidden
 
     def init_hidden(self, batch_size):
         weight = next(self.parameters()).data
