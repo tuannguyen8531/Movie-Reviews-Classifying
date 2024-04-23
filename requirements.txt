@@ -8,5 +8,6 @@ torch
 spacy
 tqdm
 pickle
-tensorflow
-keras
+bs4
+selenium
+chromedriver_autoinstaller
