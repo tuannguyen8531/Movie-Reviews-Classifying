@@ -19,10 +19,9 @@
                         <span style="font-size:18px;">
                             You have typed 
                             <span id="counter">{{ text_length|default:0 }}</span> words.<br/>
-                            <textarea class="form-control" rows="4" style="border: 1px; resize: none; width: 100%; background-color: #eee"
-                                    id="postWeiboText" onkeydown='countChar("postWeiboText","counter");'
-                                    onkeyup='countChar("postWeiboText","counter");' autocomplete="on"
-                                    name="text">{{ text|default:"" }}</textarea>
+                            <textarea class="form-control" rows="8" style="border: 1px; resize: none; width: 100%; background-color: #eee; height: 200px;"
+                                id="postWeiboText" onkeydown='countChar("postWeiboText","counter");'
+                                onkeyup='countChar("postWeiboText","counter");' autocomplete="on" name="text">{{ text|default:"" }}</textarea>
                         </span>
                     </div>                   
                     <div id="feedback" style="background-color: rgba(255,255,255,0.4)">
