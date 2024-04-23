@@ -3,12 +3,15 @@
 
 ## Description
 
-Ứng dụng phân tích cảm xúc bình luận phim dựa trên các mô hình deep learning RNN và LSTM, sử dụng framework Pytorch để tạo và huấn luyện mô hình bằng tập dữ liệu IMDB Dataset 50k Reviews, và được triển khai trên web framework Django.
+Ứng dụng phân tích cảm xúc bình luận phim là tích cực, tiêu cực hay trung tính dựa trên các mô hình deep learning RNN và LSTM, sử dụng framework Pytorch để tạo và huấn luyện mô hình, và được triển khai trên web framework Django.
 
 
 ## Get Started
 
-Mô hình được huấn luyện dựa trên tập dữ liệu 50,000 bình luận phim của IMDB ([IMDB Dataset](https://www.kaggle.com/datasets/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews)).
+Dữ liệu dùng để huấn luyện mô hình là các bình luận của người dùng được thu thập từ top 100 phim nổi bật trên [IMDB](https://www.imdb.com). Cách thu nhập dữ liệu trên IMDB được mô tả trong notebook [data_collecting.ipynb](data/data_collecting.ipynb). Dữ liệu sau khi thu thập được tổng hợp thành dataset [reviews.txt](data/reviews.txt) với chi tiết các nhãn:
+ * 0 (tiêu cực): Các bình luận có đánh giá từ 1 đến 4.
+ * 1 (trung tính): Các bình luận có đánh giá từ 5 đến 7.
+ * 2 (tích cực): Các bình luận có đánh giá từ 8 đến 10.
 
 Dự án sử dụng thư viện Pytorch để tạo và huấn luyện mô hình. Để cài đặt Pytorch, xem hướng dẫn chi tiết trên [PyTorch website](https://pytorch.org/get-started/locally).
 
@@ -20,7 +23,7 @@ Dự án sử dụng thư viện Pytorch để tạo và huấn luyện mô hìn
 Xem chi tiết các cài đặt trên [PyTorch website](https://pytorch.org/get-started/locally).
 
 ### Phiên bản Python
- * Python >= 3.9
+ * 3.9 <= Python <= 3.11
 
 
 ## Installation
@@ -37,8 +40,13 @@ Khởi tạo và kích hoạt môi trường ảo (nếu cần):
 cd Movie-Reviews-Sentiment-Analysis
 python -m venv venv
 ```
+* Windows
 ```
-venv\Scripts\Activate.ps1 
+venv\Scripts\activate
+```
+* Linux
+```
+source venv\bin\Activate.ps1 
 ```
 
 Cài đặt các dependency:
@@ -62,7 +70,7 @@ python manage.py runserver
 
 ## Notebook
 
-Notebook [sentiment-analysis.ipynb](sentiment-analysis.ipynb) thể hiện chi tiết các bước để tạo ra mô hình phân tích cảm xúc:
+Notebook [sentiment-analysis.ipynb](notebooks/sentiment-analysis.ipynb) mô tả chi tiết các bước để tạo ra mô hình phân tích cảm xúc bình luận phim là tích cực, tiêu cực hay trung tính:
 
 * Tiền xử lý dữ liệu
 * Vector hóa dữ liệu
