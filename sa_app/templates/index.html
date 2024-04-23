@@ -17,11 +17,6 @@
                     <h5 class="text-center">Enter movie review below to judge it is Positive or Negative.</h5>
                     <div class="form-group">
                         <span style="font-size:18px;">
-                            <select name="model" id="model">
-                                <option value="pytorch" {% if model == 'pytorch' %}selected{% endif %}>Pytorch</option>
-                                <option value="tensorflow" {% if model == 'tensorflow' %}selected{% endif %}>Tensorflow</option>
-                            </select> 
-                            <p></p>
                             You have typed 
                             <span id="counter">{{ text_length|default:0 }}</span> words.<br/>
                             <textarea class="form-control" rows="4" style="border: 1px; resize: none; width: 100%; background-color: #eee"
@@ -46,15 +41,17 @@
                                     {% else %}
                                         NEGATIVE
                                     {% endif %}
-                                    </b>
+                                </b>
                             </p>
                             <p>Negative score: {{ output.0 }}</p>
                             <p>Neutral score: {{ output.1 }}</p>
                             <p>Positive score: {{ output.2 }}</p>
-                            {% if pred > 1 %}
-                                <img class="text-center" src="{% static 'index/images/happy.png' %}" alt="" width="30%">
+                            {% if pred == 2 %}
+                                <img class="text-center" src="{% static 'index/images/positive.png' %}" alt="" width="30%">
+                            {% elif pred == 1 %}
+                                <img class="text-center" src="{% static 'index/images/neutral.png' %}" alt="" width="30%"> 
                             {% else %}
-                                <img class="text-center" src="{% static 'index/images/angry.png' %}" alt="" width="30%">
+                                <img class="text-center" src="{% static 'index/images/negative.png' %}" alt="" width="30%">
                             {% endif %}
                         {% endif %}
                     </div>
