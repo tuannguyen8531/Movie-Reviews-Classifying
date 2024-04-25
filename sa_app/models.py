@@ -18,6 +18,7 @@ class SentimentRNN(nn.Module):
         self.dropout = nn.Dropout(drop_prob)
 
         self.fc = nn.Linear(hidden_dim, output_size)
+        self.softmax = nn.Softmax(dim=1)
 
     def forward(self, x, hidden):
         batch_size = x.size(0)
@@ -29,6 +30,7 @@ class SentimentRNN(nn.Module):
 
         out = self.dropout(lstm_last_out)
         out = self.fc(out)
+        out = self.softmax(out)
 
         return out, hidden
 

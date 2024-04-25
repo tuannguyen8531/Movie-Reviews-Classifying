@@ -47,7 +47,7 @@ def clean_text(text):
 
 def get_vocab():
     try:
-        with open('sa_app/static/models/pytorch/tokenizer.pkl', 'rb') as f:
+        with open('sa_app/static/models/tokenizer.pkl', 'rb') as f:
             vocab = pickle.load(f)
     except FileNotFoundError as e:
         raise Exception(e)
@@ -70,10 +70,8 @@ def pad_sequences(phrase_to_int, seq_length):
 vocab = get_vocab()
 n_vocab = len(vocab) + 1
 
-model_dir = 'sa_app/static/models/pytorch/'
-model_files =  glob.glob(model_dir + 'model_*.pth')
+model_fname = 'sa_app/static/models/trained_model.pth'
 try:
-    model_fname = model_files[0]
     model = SentimentRNN(n_vocab, constants.N_OUTPUT, constants.N_EMBED, constants.N_HIDDEN, constants.N_LAYERS, constants.DEVICE)
     model.load_state_dict(torch.load(model_fname, map_location=torch.device(constants.DEVICE)))
 except IndexError:
