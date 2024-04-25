@@ -8,7 +8,7 @@
 
 ## Get Started
 
-Dữ liệu dùng để huấn luyện mô hình là các bình luận của người dùng được thu thập từ top 100 phim nổi bật trên [IMDB](https://www.imdb.com). Cách thu nhập dữ liệu trên IMDB được mô tả trong notebook [data_collecting.ipynb](data/data_collecting.ipynb). Dữ liệu sau khi thu thập được tổng hợp thành dataset [reviews.txt](data/reviews.txt) với chi tiết các nhãn:
+Dữ liệu dùng để huấn luyện mô hình là các bình luận của người dùng được thu thập từ top 100 phim nổi bật trên [IMDB](https://www.imdb.com). Cách thu nhập dữ liệu trên IMDB được mô tả trong notebook [data_collecting.ipynb](data/data_collecting.ipynb). Dữ liệu sau khi thu thập được tổng hợp thành dataset [reviews.tsv](data/reviews.tsv) với chi tiết các nhãn:
  * 0 (tiêu cực): Các bình luận có đánh giá từ 1 đến 4.
  * 1 (trung tính): Các bình luận có đánh giá từ 5 đến 7.
  * 2 (tích cực): Các bình luận có đánh giá từ 8 đến 10.
@@ -42,11 +42,11 @@ python -m venv venv
 ```
 * Windows
 ```
-venv\Scripts\activate
+venv/Scripts/activate
 ```
 * Linux
 ```
-source venv\bin\Activate.ps1 
+source venv/bin/Activate.ps1 
 ```
 
 Cài đặt các dependency:
