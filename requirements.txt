@@ -7,7 +7,6 @@ django
 torch
 spacy
 tqdm
-pickle
 bs4
 selenium
 chromedriver_autoinstaller
