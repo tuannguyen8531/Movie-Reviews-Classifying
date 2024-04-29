@@ -1,4 +1,3 @@
-import pandas
 import time
 import chromedriver_autoinstaller
 from selenium import webdriver
@@ -68,7 +67,7 @@ def crawl_data(urls):
     return all_ratings, all_texts
 
 def to_tsv(index, all_ratings, all_texts):
-    tsv_file = "./reviews" + str(index) + ".tsv"
+    tsv_file = "./train" + str(index) + ".tsv"
 
     all_texts_processed = [text.replace("\n", " ") for text in all_texts]
 

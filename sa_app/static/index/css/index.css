@@ -1,50 +1,44 @@
-body {
-    height: 100%;
-    background-image: url('../images/');
-    background-size: cover; /* Điều chỉnh kích thước hình nền để nó bao phủ toàn bộ trang */
-    background-position: center; /* Căn hình ảnh ở giữa trang */
-    background-repeat: no-repeat;
-}
-.form-login {
-    width: 100%;
-    max-width: 800px;
-    padding: 15px;
+* {
     margin: 0 auto;
-}
-.form-login{
-    margin-top:80px;
-    font-weight: 400;
-}
-
-.form-login .form-control {
-    position: relative;
+    padding: 0 auto;
     box-sizing: border-box;
-    height: auto;
-    padding: 10px;
-    font-size: 16px;
 }
 
-.form-login .form-control:focus {
-    z-index: 2;
+body {
+    background: linear-gradient(-20deg, #d558c8 0%, #24d292 100%);
+    height: 100vh;
+    margin: 0;
 }
 
-.form-login input[type="text"] {
-    margin-bottom: -1px;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
+.div-text {
+    border: 1px solid black; 
+    margin: 10px;
+    border-radius: 15px;
 }
 
-.form-group {
-    margin-top:40px;
+#inputtext {
+    border: 1px solid black; 
+    resize: none; 
+    width: 100%; 
+    background-color: rgb(189, 183, 183); 
+    height: 270px;
 }
 
-.feedback {
-    background-color:#000000;
+.btn-form {
+    width: 49%;
 }
 
-form a{
-    display: inline-block;
-    margin-top:25px;
-    font-size: 12px;
-    line-height: 10px;
+footer {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    padding: 20px 30px;
+    margin: 5px 20px;
+}
+
+.footer-text {
+    margin: 0;
+    font-size: 25px;
+    color: #555;
+    text-decoration: none;
 }

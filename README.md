@@ -3,26 +3,28 @@
 
 ## Description
 
-Ứng dụng phân tích cảm xúc bình luận phim là tích cực, tiêu cực hay trung tính dựa trên các mô hình deep learning RNN và LSTM, sử dụng framework Pytorch để tạo và huấn luyện mô hình, và được triển khai trên web framework Django.
+An application for sentiment analysis of movie comments, categorizing them as positive, negative, or neutral, employing deep learning models RNN and LSTM, utilizing the PyTorch framework for model creation and training, and deployed on the Django web framework.
 
 
 ## Get Started
 
-Dữ liệu dùng để huấn luyện mô hình là các bình luận của người dùng được thu thập từ top 100 phim nổi bật trên [IMDB](https://www.imdb.com). Cách thu nhập dữ liệu trên IMDB được mô tả trong notebook [data_collecting.ipynb](data/data_collecting.ipynb). Dữ liệu sau khi thu thập được tổng hợp thành dataset [reviews.tsv](data/reviews.tsv) với chi tiết các nhãn:
- * 0 (tiêu cực): Các bình luận có đánh giá từ 1 đến 4.
- * 1 (trung tính): Các bình luận có đánh giá từ 5 đến 7.
- * 2 (tích cực): Các bình luận có đánh giá từ 8 đến 10.
+The training data for the model consists of user comments collected from the top 100 popular movies on [IMDB](https://www.imdb.com). The method of data collection from movies listed on IMDB is described in [data_collecting.py](data/data_collecting.py), with the URLs provided in the file [urls.txt](data/urls.txt). After the data collection process, the data is compiled into two dataset files: [train.tsv](data/reviews.tsv) and [test.tsv](data/test.tsv), with detailed labels.
+ * 0 (negative): The comments are rated on a scale from 1 to 4.
+ * 1 (neutral): The comments are rated on a scale from 5 to 7.
+ * 2 (positive): The comments are rated on a scale from 8 to 10.
 
-Dự án sử dụng thư viện Pytorch để tạo và huấn luyện mô hình. Để cài đặt Pytorch, xem hướng dẫn chi tiết trên [PyTorch website](https://pytorch.org/get-started/locally).
+The data in the file [train.tsv](data/reviews.tsv) is used for training the RNN model, while the data in the file [test.tsv](data/test.tsv) is used to evaluate the accuracy of the model.
+
+The project utilizes the PyTorch library for model creation and training. To install PyTorch, please refer to the detailed instructions on the [PyTorch website](https://pytorch.org/get-started/locally).
 
 
 ## Requirements
 
-### Cài đặt Pytorch
+### Pytorch installation
 
-Xem chi tiết các cài đặt trên [PyTorch website](https://pytorch.org/get-started/locally).
+To install PyTorch, please refer to the detailed instructions on the [PyTorch website](https://pytorch.org/get-started/locally).
 
-### Phiên bản Python
+### Python version
  * 3.9 <= Python <= 3.11
 
 
@@ -34,7 +36,7 @@ Clone repo:
 git clone https://github.com/tuannguyen8531/Movie-Reviews-Sentiment-Analysis.git
 ```
     
-Khởi tạo và kích hoạt môi trường ảo (nếu cần):
+Initialize and activate a virtual environment (if needed):
 
 ```
 cd Movie-Reviews-Sentiment-Analysis
@@ -49,19 +51,19 @@ venv/Scripts/activate
 source venv/bin/Activate.ps1 
 ```
 
-Cài đặt các dependency:
+Install dependencies
 
 ```
 pip install -r requirements.txt
 ```
 
-Cài đặt spacy english data:
+Install spacy english data:
 
 ```
 python -m spacy download en_core_web_sm
 ```
 
-Chạy project:
+Run project:
 
 ```
 python manage.py runserver
@@ -70,13 +72,13 @@ python manage.py runserver
 
 ## Notebook
 
-Notebook [sentiment-analysis.ipynb](notebooks/sentiment-analysis.ipynb) mô tả chi tiết các bước để tạo ra mô hình phân tích cảm xúc bình luận phim là tích cực, tiêu cực hay trung tính:
+The notebook [sentiment-analysis.ipynb](sentiment-analysis.ipynb) describes in detail the steps to create a model for sentiment analysis of movie comments as positive, negative, or neutral:
 
-* Tiền xử lý dữ liệu
-* Vector hóa dữ liệu
-* Tạo và huấn luyện mô hình LSTM
-* Phân tích cảm xúc bình luận
-* Đánh giá mô hình
+* Data preprocessing
+* Data vectorization
+* LSTM model creation and training
+* Review classification
+* Result evaluation
 
 ![Workflow](workflow.png)
 
