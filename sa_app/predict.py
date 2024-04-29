@@ -124,7 +124,7 @@ def predict(sentence):
     
     output, _ = model(text_tensor, h)
     predicted = output.flatten().cpu().detach().numpy()
-    output = predicted.tolist()
+    output = output = ["{:.12f}".format(num) for num in predicted]
     pred = np.argmax(predicted)
     
     return output, pred
