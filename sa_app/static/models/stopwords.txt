@@ -62,6 +62,7 @@ and
 if
 or
 because
+but
 as
 until
 while
@@ -112,6 +113,8 @@ other
 some
 such
 nor
+not
+no
 only
 own
 same
@@ -126,3 +129,4 @@ should
 now
 must
 thus
+movie

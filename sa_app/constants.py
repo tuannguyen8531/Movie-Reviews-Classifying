@@ -1,7 +1,7 @@
 import torch
 
 SEQ_LENGTH = 300
-N_EMBED = 128
+N_EMBED = 100
 N_HIDDEN = 256
 N_OUTPUT = 3
 N_LAYERS = 2
