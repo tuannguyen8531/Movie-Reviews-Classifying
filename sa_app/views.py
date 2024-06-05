@@ -11,6 +11,13 @@ def index(request: HttpRequest):
     if request.method == 'POST':
         text = request.POST.get('text')
         model = request.POST.get('model')
+        result['text'] = text
+        result['model'] = model
+        result['text_length'] = len(text.split()) if text else 0
+        
+        if not text:
+            return render(request, 'index.html', result)
+
         if model == 'multiclass':
             output, pred = predict(text)
             result['output'] = output
@@ -20,8 +27,5 @@ def index(request: HttpRequest):
             result['neg'] = format(100 - float(output), ".2f")
             result['pos'] = output
             result['pred'] = pred
-        result['text'] = text
-        result['model'] = model
-        result['text_length'] = len(text.split())
 
     return render(request, 'index.html', result)
