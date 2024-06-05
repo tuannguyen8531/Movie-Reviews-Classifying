@@ -7,6 +7,9 @@ N_OUTPUT = 3
 N_LAYERS = 2
 DEVICE = 'cuda:0' if torch.cuda.is_available() else 'cpu'
 
+N_EMBED_V2 = 300
+N_OUTPUT_V2 = 1
+
 CONTRACTION_REPLACEMENTS = {
     "don\'t": "do not",
     "dont": "do not",

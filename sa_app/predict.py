@@ -13,6 +13,7 @@ from . import constants
 
 nltk.download('punkt')
 nltk.download('wordnet')
+nltk.download('stopwords')
 
 def get_list_stopword():
     stopwords = []
