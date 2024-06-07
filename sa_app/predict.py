@@ -112,6 +112,8 @@ def predict(sentence):
     model = get_model()
 
     words = clean_text(sentence)
+    if len(words) <= 0:
+        return None, None
     text_ints = phrase_to_ints(words)
     padded_text = pad_sequences(text_ints, constants.SEQ_LENGTH)
     

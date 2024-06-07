@@ -24,8 +24,9 @@ def index(request: HttpRequest):
             result['pred'] = pred
         else:
             output, pred = predict_v2(text)
-            result['neg'] = format(100 - float(output), ".2f")
-            result['pos'] = output
+            if output:
+                result['neg'] = format(100 - float(output), ".2f")
+                result['pos'] = output
             result['pred'] = pred
 
     return render(request, 'index.html', result)
